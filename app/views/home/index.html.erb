@@ -1,0 +1,16 @@
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+  <h1>welcome</h1>
+  <%= render 'shared/profile_page' %>
+      </section>
+  </div>  
+<% else %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/intro_page' %>
+      </section>
+  </div>
+<% end %>

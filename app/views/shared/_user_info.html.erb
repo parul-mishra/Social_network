@@ -1,0 +1,9 @@
+ <% if user_signed_in? %>
+<h1>
+  <%= current_user.email %>
+  <%= current_user.username %>
+</h1>
+<span>
+  <%= link_to "view my profile", '/users/' + current_user.id.to_s %>
+</span>
+<%end%>

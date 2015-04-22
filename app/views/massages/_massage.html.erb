@@ -1,0 +1,11 @@
+<li class="<%=  self_or_other(massage) %>">
+  <div class="avatar">
+    <img src="http://placehold.it/50x50" />
+  </div>
+  <div class="chatboxmessagecontent">
+    <p><%= massage.body %></p>
+    <time datetime="<%= massage.created_at %>" title="<%= massage.created_at.strftime("%d %b  %Y at %I:%M%p") %>">
+      <%= massage_interlocutor(massage).username %> • <%= massage.created_at.strftime("%H:%M %p") %>
+    </time>
+  </div>
+</li>

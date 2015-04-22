@@ -1,0 +1,38 @@
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+       <h1>Users</h1>
+     <p id="notice"><%= notice %></p>
+               <table>
+                 <tr>
+                  <th></th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                </tr>
+
+  <% @users.each_with_index do |user, index| %>
+    <tr>
+      <th><%= index +=1 %></th>
+      <th><%= user.email %></th>
+      <th><%= user.username %></th>
+      <th><%= image_tag(user.avatar.url(:thumb))%></th><br>
+      <th>
+        <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-converzation",
+                    "data-sid" => current_user.id, "data-rip" => user.id %>
+      </th>
+    </tr>
+<% end %>
+</table>
+     </section>
+   </div>
+   
+  <%else%>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/intro_page' %>
+      </section>
+  </div>
+<% end %>
