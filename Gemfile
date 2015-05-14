@@ -33,6 +33,8 @@ gem 'twitter'
 gem 'fb_graph'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'haml', '4.0.5'
+gem 'will_paginate', '3.0.4'
 
 # image upload
 gem 'paperclip', '~> 4.1'
@@ -40,7 +42,9 @@ gem 'paperclip', '~> 4.1'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+group :development, :test do
+gem 'foreman'
+end
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -1,8 +1,64 @@
- <div class="center hero-unit">
-    <h1>Welcome to the Social app</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="carousel-example" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example" data-slide-to="1"></li>
+                    <li data-target="#carousel-example" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="http://www.prepbootstrap.com/Content/images/template/carouselstaticheader/slide_03.jpg" alt="First slide" />
+                        <div class="carousel-caption">
+                            <h3>Welcome to the Social app</h3>
+                            <p>
+                            The best way of keep in touch with friends.
+                            </p>
+                            <p><%= link_to "Sign up now!", new_user_registration_path,class: "btn btn-clear btn-sm btn-min-block" %>
+                        <%= link_to "login", new_user_session_path,class: "btn btn-clear btn-sm btn-min-block" %></p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="http://www.prepbootstrap.com/Content/images/template/carouselstaticheader/slide_02.jpg" alt="Second slide" />
+                        <div class="carousel-caption">
+                            <h3>Welcome to the Social app</h3>
+                            <p>
+                               The best way of keep your smile forever.
+                            </p>
+                     <p><%= link_to "Sign up now!", new_user_registration_path,class: "btn btn-clear btn-sm btn-min-block" %>
+                        <%= link_to "login", new_user_session_path,class: "btn btn-clear btn-sm btn-min-block" %>
+                     </p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="http://www.prepbootstrap.com/Content/images/template/carouselstaticheader/slide_01.jpg" alt="Third slide" />
+                        <div class="carousel-caption">
+                            <h3>Welcome to the Social app</h3>
+                            <p>
+                               The best way to share your emotions with your friends.
+                            </p>
+                            <p><%= link_to "Sign up now!", new_user_registration_path,class: "btn btn-clear btn-sm btn-min-block" %>
+                        <%= link_to "login", new_user_session_path,class: "btn btn-clear btn-sm btn-min-block" %></p>
+                        </div>
+                    </div>
+                </div>
 
-    <h2>
-      The best way of keep in touch with friends.
-    </h2>
-<%= link_to "Sign up now!", new_user_registration_path,class: "btn btn-large btn-primary" %>
-<%= link_to "login", new_user_session_path,class: "btn btn-large btn-primary" %>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#carousel-example" role="button" data-slide="prev">
+                    <span class="fa fa-arrow-left" aria-hidden="true"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example" role="button" data-slide="next">
+                    <span class="fa fa-arrow-right" aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="main-text hidden-xs">
+                <div class="col-md-12 text-center">
+                    <h1>Social Application</h1>
+                    <h3>More Friends , More Chat, More Happiness !!
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

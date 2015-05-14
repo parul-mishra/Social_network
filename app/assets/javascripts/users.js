@@ -31,14 +31,13 @@ var ready = function () {
     /**
      * Used to close the chatbox
      */
- 
-    $(document).on('click', '.closeChat', function (e) {
+ $(document).on('click', '.closeChat', function (e) {
         e.preventDefault();
  
         var id = $(this).data('cid');
         chatBox.close(id);
     });
- 
+
  
     /**
      * Listen on keypress' in our chat textarea and call the
@@ -68,3 +67,6 @@ var ready = function () {
  
 $(document).ready(ready);
 $(document).on("page:load", ready);
+
+//$(document).ready(function() {});
+

@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
 	 before_filter :authenticate_user!
-
+  helper_method :mailbox, :conversation
 
   def new
   end

@@ -1,0 +1,17 @@
+<% if current_user == @user %>
+    <h4>Friends</h4>
+    <ul>
+        <% @user.friends.each do |friend| %>
+        <li>
+          <%= friend.email %> 
+               <% if current_user == @user %>
+                    <%= link_to "Remove", friendship_path(:id => friend), :method => :delete, class: "btn btn-btn-primary" %>
+               <% end %>
+        </li>
+       <% end %>
+    </ul>
+<%end%>
+
+
+
+

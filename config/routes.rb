@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
  
 
-devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' },
-                   controllers: { omniauth_callbacks: "omniauth_callbacks"}
-                   resources :users
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+resources :friendships
 
+root 'home#dashboard', :via => :get
+match 'home/dashboard' => 'home#dashboard', via: :get
+devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register', profile: 'profile'  },
+                   controllers: { omniauth_callbacks: "omniauth_callbacks"},
+                    controllers:  {registrations: "registrations"}
+                  resources :users, :only =>[:show, :index]
+                  match 'users/:id' => 'users#show', via: :get
+                  match 'profile/show/:id' => 'profile#show', via: :get  
+                   # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+             
   # You can have the root of your site routed with "root"
-  
+
    resources :converzations do
     resources :massages
   end
@@ -21,14 +28,15 @@ devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 
       post :untrash
    end
  end
-
   get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
   get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
-  
- root 'home#dashboard', :via => :get
 
- 
+  
+   get 'profile/index' 
+   get 'profile/show' 
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

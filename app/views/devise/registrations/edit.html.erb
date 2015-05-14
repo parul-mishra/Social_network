@@ -1,60 +1,149 @@
-<div class="border-form-div">
+
+
+
+
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div><%= f.label :name %><br />
+        <%= f.text_field :username, autofocus: true %></div>
+
+    <div><%= f.check_box :is_female, {}, true %> <%= f.label :is_female, "Female" %> </div>
+    <div><%= f.check_box :is_female, {}, false %> <%= f.label :is_female, "Male" %> </div>
+
+    <div><%= f.label :date_of_birth %><br />
+        <%= f.date_select :date_of_birth %></div>
+
+    <div><%= f.label :email %><br />
+        <%= f.email_field :email %></div>
+
+
+    
+     <div >
+        <%= f.label :avatar %>
+        <%= f.file_field :avatar %>
+    </div>
+  
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "off" %></div>
+
+    <div><%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+
+    <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.password_field :current_password, autocomplete: "off" %></div>
+
+    <div><%= f.submit "Update" %></div>
+    <% end %>
+
+    <h3>Cancel my account</h3>
+
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+    <%= link_to "Back", :back %>
+
+
+ <div class="container">
+     <div class="row">
+
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-<div class="field">
-  <%= f.label :username %></br>
-  <%= f.text_field :username, autofocus: true %>
-</div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+         <div class="col-md-3">
+                   <div class="text-center"> 
+                     <div class="avatar img-circle" alt="avatar"> <%= image_tag(current_user.avatar.url(:thumb)) %></div>
+                       <h6>Upload a different photo...</h6>
+                         <%= f.file_field :avatar %>
+                   </div>
+         </div>
 
-    <div class="field"><%= f.radio_button :is_female, true %> <%= f.label :is_female, "Female" %> </div>
-    <div class="field"><%= f.radio_button :is_female, false %> <%= f.label :is_female, "Male" %> </div>
 
-    <div class="field">
-        <%= f.label :date_of_birth %><br />
-        <%= f.date_select :date_of_birth %>
-      </div>
+        <div class="col-md-9 personal-info">
+                  <div class="alert alert-info alert-dismissable">
+                      <a class="panel-close close" data-dismiss="alert">×</a> 
+                          <i class="fa fa-user"></i>
+                           <strong>EDIT YOUR PROFILE</strong> <%= devise_error_messages! %>
+                  </div>
+        
 
-     <div class='field'>
-        <%= f.label :avatar %>
-        <%= f.file_field :avatar %>
+             <h3>Personal info</h3>
+      
+             <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                         <label class="col-lg-3 control-label">First name:</label>
+                           <div class="col-lg-8"> <%= f.text_field :username, autofocus: true %> </div><br />
+                      </div>
+
+                      <div class="form-group">
+                         <label class="col-lg-3 control-label">Email:</label>
+                           <div class="col-lg-8"> <%= f.email_field :email, autofocus: true %></div><br />
+                      </div>
+
+                      <div class="form-group">
+                         <label class="col-lg-3 control-label">Gender:</label>
+                           <div class="col-lg-8"> <%= f.radio_button :is_female, true %> <%= f.label :is_female, "Female" %>
+                            <%= f.radio_button :is_female, false %> <%= f.label :is_female, "Male" %></div><br/>
+                      </div>
+
+                      <div class="form-group">
+                         <label class="col-lg-3 control-label">Date Of Birth:</label>
+                           <div class="col-lg-8"><%= f.date_select :date_of_birth, :order => [:day, :month, :year], :start_year => 1900, :end_year => Time.now.year - 18 %></div><br />
+                      </div>
+
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+       <% end %>
+
+                      <div class="form-group">
+                          <br/>
+                               <i>(leave blank if you don't want to change it)</i><br/>
+                                    <label class="col-lg-3 control-label">New Password:</label> 
+                                    <div class="col-lg-8"><%= f.password_field :password, autocomplete: "off" %></div><br/>
+                      </div>
+
+
+                      <div class="form-group">
+                         <label class="col-lg-3 control-label">Confirm Password:</label>
+                             <div class="col-lg-8"> <%= f.password_field :password_confirmation, autocomplete: "off" %></div><br />
+                      </div>
+
+                        <br/>
+                            <i>(we need your current password to confirm your changes)</i>
+                     
+                      <div class="form-group">
+                         <label class="col-lg-3 control-label">Current Password :</label>
+                             <div class="col-lg-8"><%= f.password_field :current_password, autocomplete: "off" %></div><br />
+                      </div>
+
+                            <div><%= f.submit "Save Changes"%> </div>
+                      </div>
+                 </form>
+            
+        </div>
+     <% end %>
+
+  </div><!--row-->
+</div> <!--container-->
+
+
+
+<div class="col-md-9 personal-info">
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-user"></i>
+        <strong>deactivate Account</strong><%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+        </div>
     </div>
-   
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
-</div>
+<%= link_to "Back", :back  %>

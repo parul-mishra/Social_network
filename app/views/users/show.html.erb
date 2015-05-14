@@ -1,0 +1,30 @@
+<h1><%= @user.email %></h1>
+
+<div class="row">
+    <aside class="col-sm-3 grid-user-list">
+      <section>
+        <%= render 'users/added_friends' %>
+      </section>
+  </div>
+
+  <div class="row">
+    <aside class="col-sm-3 grid-user-list">
+      <section>
+        <%= render 'users/user_info' %>
+      </section>
+  </div>
+
+
+ <div class="row">
+    <aside class="col-sm-3 grid-user-list">
+      <section>
+        <%= render 'users/friendrequests' %>
+      </section>
+  </div>
+
+  <div class="row">
+    <aside class="col-sm-3 grid-user-list">
+      <section>
+        <%= render 'users/all_users' %>
+      </section>
+  </div>

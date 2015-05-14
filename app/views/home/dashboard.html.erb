@@ -1,38 +1,39 @@
 <% if signed_in? %>
-  <div class="row">
-    <aside class="span4">
       <section>
        <h1>Users</h1>
-     <p id="notice"><%= notice %></p>
-               <table>
-                 <tr>
-                  <th></th>
-                   <th></th>
-                   <th></th>
-                   <th></th>
-                </tr>
-
-  <% @users.each_with_index do |user, index| %>
-    <tr>
-      <th><%= index +=1 %></th>
-      <th><%= user.email %></th>
-      <th><%= user.username %></th>
-      <th><%= image_tag(user.avatar.url(:thumb))%></th><br>
-      <th>
-        <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-converzation",
-                    "data-sid" => current_user.id, "data-rip" => user.id %>
-      </th>
-    </tr>
-<% end %>
-</table>
      </section>
-   </div>
-   
-  <%else%>
+
+<div class="container-fluid">
+  </div>
+
+   <% @users.each do |user| %>
+        <div class="col-sm-3 grid-user-list">
+          <div class="panel panel-default">
+            <div class="panel-body">
+               <div class="img pull-left col-lg-6"><%= link_to image_tag(user.avatar.url(:thumb)),user_path(user.id)%></div>
+                  <div class="col-lg-6 pull-left nomargin" style="padding: 0px;">
+                      <div class="text"><%= user.username %></div>
+                          <div class="actions"> 
+                               <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-converzation","data-sid" => current_user.id, "data-rip" => user.id %>
+                             <% unless current_user == @user %>
+                              <%= link_to "Add Friend",friendships_path(:friend_id => user),:method => :post, class: "btn btn-success btn-xs start-converzation" ,data: { disable_with: "Request sent.." } %>
+                               <%end%>
+        
+                          </div><!--action-->
+                      </div>
+                  </div><!--/col-->        
+            </div><!--/panel-body-->
+          </div><!--/panel-->   
+ </div><!--/grid user--> 
+
+
+   <%end%>
+<%else%>
   <div class="row">
     <aside class="span4">
       <section>
         <%= render 'shared/intro_page' %>
       </section>
   </div>
+
 <% end %>

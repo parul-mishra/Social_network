@@ -1,6 +1,6 @@
 <li class="<%=  self_or_other(massage) %>">
   <div class="avatar">
-    <img src="http://placehold.it/50x50" />
+    <%= image_tag massage_interlocutor(massage).avatar.url(:thumb) %>
   </div>
   <div class="chatboxmessagecontent">
     <p><%= massage.body %></p>

@@ -3,14 +3,16 @@
     <i class="fa fa-comments"></i>
  
     <h1><%= @reciever.username %> </h1>
-  </div>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     
   <div class="chatboxoptions">
-    <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @converzation.id %>
-   
-    <%= link_to "<i class='fa  fa-times'></i> ".html_safe, "#", class: "closeChat", "data-cid" => @converzation.id %>
-  </div>
+    <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", "data-cid" => @converzation.id %> &nbsp; &nbsp;   
+    <%= link_to "<i class='fa  fa-times'></i> ".html_safe, "#", class: "closeChat", "data-cid" => @converzation.id %> 
+ 
+ </div>
   <br clear="all"/>
 </div>
+ </div>
 <div class="chatboxcontent">
   <% if @massages.any? %>
       <%= render @massages %>
@@ -21,5 +23,4 @@
       <%= f.text_area :body, class: "chatboxtextarea", "data-cid" => @converzation.id %>
   <% end %>
 </div>
- 
 <%= subscribe_to converzation_path(@converzation) %>

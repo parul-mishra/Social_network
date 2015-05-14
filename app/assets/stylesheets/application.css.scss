@@ -17,6 +17,7 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 
 @import "bootstrap-sprockets";
+
 @import "bootstrap";
 
 /* universal */
@@ -118,26 +119,34 @@ footer ul li {
 
 /* navigation */
 
-$bgDefault      : #900202;
-$bgHighlight    : #f7a505;
-$colDefault     : #f3fafb;
-$colHighlight   : #0f0c0c;
+$bgDefault      : #14051a;
+$bgHighlight    : #969298;
+$colDefault     : #ecf0f1;
+$colHighlight   : #03eee4;
 $dropDown       : false;
+
+
 .navbar-default {
   background-color: $bgDefault;
   border-color: $bgHighlight;
+margin-bottom:0;
+ 
+  
   .navbar-brand {
     color: $colDefault;
     &:hover, &:focus { 
       color: $colHighlight; }}
+
   .navbar-text {
     color: $colDefault; }
+
   .navbar-nav {
     > li {
       > a {
         color: $colDefault;
         &:hover,  &:focus {
           color: $colHighlight; }}
+
       @if $dropDown {
         > .dropdown-menu {
           background-color: $bgDefault;
@@ -146,6 +155,7 @@ $dropDown       : false;
             &:hover,  &:focus {
               color: $colHighlight;
               background-color: $bgHighlight; }}
+
           .divider {
             background-color: $bgHighlight;}}}
     }
@@ -182,19 +192,19 @@ $dropDown       : false;
         background-color: $bgHighlight; }}}
 }
 
-
 .round-image-50 {
     background-color: white;
     border: 1px solid #d9d9d9;
-    border-radius: 15px;
-    -moz-border-radius: 15px;
-    -webkit-border-radius: 15px;
-    height: 30px;
-    width: 30px;
+    border-radius: 20px;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    height: 40px;
+    width: 40px;
     overflow: hidden;
     text-align: center;
     img { width: 100% }
 }
+
 
 /* User sign in and sign forms. */
 .border-form-div {
@@ -222,3 +232,53 @@ $dropDown       : false;
   margin-bottom: 15px;
   padding: 7px 9px;
 }
+
+.grid-user-list .btn { margin-top: 10px;}
+.grid-user-list .nomargin { margin: 0px;}
+.grid-user-list { margin-bottom: 15px;}
+
+
+
+.main-text {
+    position: absolute;
+    top: 50px;
+    width: 96.66666666666666%;
+    color: #FFF;
+}
+
+.btn-min-block {
+    min-width: 170px;
+    line-height: 26px;
+}
+
+.btn-clear {
+    color: #FFF;
+    border-color: #FFF;
+    border-width: 2px;
+    margin-right: 15px;
+}
+
+.btn-clear:hover {
+    color: #000;
+    background-color: #6699CC;
+}
+
+.arrowalign {
+    top: 50%;
+}
+
+.arrowalign:hover {
+    vertical-align: middle;
+}
+
+.carousel-control {
+    color: #fff;
+    top: 50%;
+    bottom: auto;
+    padding-top: 0px;
+    width: 30px;
+    height: 30px;
+    text-shadow: none;
+    opacity: 0.9;
+}
+
