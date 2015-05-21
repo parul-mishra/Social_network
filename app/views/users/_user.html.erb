@@ -1,0 +1,15 @@
+ <div class="fb-profile">
+        <img align="left"><%= image_tag user.avatar.url , width: 100, hight: 100%></img>
+        <div class="fb-profile-text">
+           <h4> <%= link_to user.username, user %></h4>
+            <p> <section class="stats">
+               <%= render 'shared/stats' %>
+           </section></p>
+            <p>
+            	<% if current_user?(user) %>
+   
+                  <%= render 'users/follow_form' if signed_in? %>
+                 <% end %>
+        </div>
+    </div>
+

@@ -1,11 +1,8 @@
 <% if signed_in? %>
-  <div class="row">
-    <aside class="span4">
-      <section>
-  <h1>welcome</h1>
-  <%= render 'shared/profile_page' %>
-      </section>
-  </div>  
+  <%= render 'posts/form' %>
+<% @activities.each do |activity| %>
+    <%= render_activity(activity) %>
+<% end %>
 <% else %>
   <div class="row">
     <aside class="span4">

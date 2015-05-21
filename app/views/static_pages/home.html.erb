@@ -1,0 +1,16 @@
+<% if signed_in? %>
+  <% provide(:title, 'Home') %>
+    <div class="col-md-4">
+      <section>
+        <%= render :partial => "users/user", :locals => { :user => current_user } %>
+      </section>
+  </div>
+
+    <div class="col-md-8">
+     <h3>Post Feed</h3>
+    <%= render 'shared/new_post' %>
+    <hr />
+     <%= render 'shared/feed' %>
+   </div>
+
+<% end %>

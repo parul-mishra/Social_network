@@ -1,26 +1,42 @@
 Rails.application.routes.draw do
  
 
-resources :friendships
-
 root 'home#dashboard', :via => :get
-match 'home/dashboard' => 'home#dashboard', via: :get
+
 devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register', profile: 'profile'  },
-                   controllers: { omniauth_callbacks: "omniauth_callbacks"},
-                    controllers:  {registrations: "registrations"}
+                   controllers: { omniauth_callbacks: "omniauth_callbacks" ,registrations: "registrations"}
                   resources :users, :only =>[:show, :index]
                   match 'users/:id' => 'users#show', via: :get
                   match 'profile/show/:id' => 'profile#show', via: :get  
+    
+ resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
+
+
+  resources :posts
+  
+   match 'posts/:id' =>"posts#show" ,via: :get
+  
+  resources :comments
+
+ match "static_pages/home" => "static_pages#home", via: [:get, :post]
+
                    # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-             
+               
   # You can have the root of your site routed with "root"
 
+  resources :relationships,only: [:create, :destroy]
+
+resources :friendships
    resources :converzations do
     resources :massages
   end
 
-  
   resources :conversations do   
    member do
       post :reply
@@ -28,6 +44,7 @@ devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 
       post :untrash
    end
  end
+
   get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
   get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash

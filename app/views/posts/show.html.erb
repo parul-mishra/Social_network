@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<div class="col-md-1">
+<%= button_to 'Back', static_pages_home_path, class: "btn" %>
+</div>
+
+<div class="col-md-2">
+<%= image_tag @post.user.avatar.url(:thumb) %>
+<%= link_to @post.user.username, @post.user %>
+</div>
+<div class="col-md-8">
+<p>
+  <%= @post.content %>
+</p>
+<div class="<%= @post.class %>-<%= @post.id %>"></div>
+<%= image_tag @post.avatar.url(:medium) if @post.avatar.exists? %>
+<section>
+<%= link_to pluralize(@comments.count, 'comment'), @post, class: 'comments' %></section>
+<br>
+<%= render 'shared/form' %>
+<br><%= render @comments  %>
+</div></div>

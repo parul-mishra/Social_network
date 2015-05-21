@@ -9,39 +9,44 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Social</a>
+      <a class="navbar-brand">Social</a>
     </div>
   
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-      <li class="active"><%= link_to 'dashboard' , root_path %><span class="sr-only">(current)</span></li>
+      <li ><%= link_to 'dashboard' , root_path %></li>
+       <li><%= link_to 'Feed', static_pages_home_path%></li>
         <li><%= link_to mailbox_inbox_path do  %>
         <span class="label label-danger pull-right"><%=unread_messages_count%></span>
         <em class="fa fa-inbox fa-lg"></em>
         <span>Inbox</span>
         <% end %></li>
-        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.username %><span class="caret"></span></a>
-             <ul class="dropdown-menu" role="menu"> 
-                 <li class='active'>
-                  <%= link_to('Profile', edit_user_registration_path) %>
-                 </li>
-                 <li>
-                    <%= link_to "Friends",user_path(current_user) %>
-                 </li>
-                </ul>
-            <li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb))%></li>
-        </li>
-      </ul>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-right">
-                   <ul class="nav navbar-nav">   
-                  <li>
-                    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-                 </li>
-              </ul>
-    <% else %>
- <% end %>
+       
+         <li class="round-image-50"><%= image_tag(current_user.avatar.url(:thumb))%></li> 
+                  <li> <%= link_to user_path(current_user) do %>
+                     <span><%= current_user.username %></span>
+              <%end%> </li>
+          </ul>
+
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form class="navbar-form navbar-right">
+          <ul class="nav navbar-nav">
+            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings<span class="caret"></span></a>
+                 <ul class="dropdown-menu" role="menu"> 
+                     <li >
+                      <%= link_to('Edit Profile', edit_user_registration_path) %>
+                     </li>
+                     <li>
+                        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>     
+                     </li>
+                    </ul>
+            </li>
+          </ul>
+        </form>
+    </div>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<% end %>

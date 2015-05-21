@@ -1,0 +1,14 @@
+.postTextarea input{ font-size:14px!important;}
+
+.post input{font-size: 15px!important;    font-weight: 600!important;    margin-top: 10px!important;    text-transform: uppercase!important;    width: 80px!important;}
+
+ .recentcomments ul{ padding:0;}
+ .recentcomments ul li{ padding:0; margin:0; list-style: none;}
+
+
+ul#recentcomments {    list-style: outside none none;    margin: 0;    overflow-x: hidden;    overflow-y: auto;    padding: 0;}
+ul#recentcomments li.recentcomments {    background-image: none;    border-bottom: 1px solid #c6c6c6;    clear: both;    display: inline-block;    list-style: outside none none;    margin: 0 0 8px;    padding: 0 0 9px;}
+ul#recentcomments .palignleft, ul#recentcomments .palignleftright-0, ul#recentcomments .palignrightleft-1 {    float: left;    margin: 0 8px 0 0;    padding: 0;}ul#recentcomments .palignright, ul#recentcomments .palignrightleft-0, ul#recentcomments .palignleftright-1 {    float: right;    margin: 0 0 8px;    padding: 0;}
+ul#recentcomments img.avatar {    background-color: #ffffff;    border: 1px solid #c6c6c6;    box-shadow: none;    margin: 0;    padding: 4px;}
+ul#recentcoments .date {    color: #ccc;    font-size: 12px;    font-style: italic;}
+

@@ -122,8 +122,6 @@ GEM
       thor (~> 0.19.1)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
-    haml (4.0.5)
-      tilt
     hashie (3.4.1)
     http (0.6.4)
       http_parser.rb (~> 0.6.0)
@@ -186,6 +184,11 @@ GEM
       mime-types
     private_pub (1.0.3)
       faye
+    public_activity (1.4.2)
+      actionpack (>= 3.0.0)
+      activerecord (>= 3.0)
+      i18n (>= 0.5.0)
+      railties (>= 3.0.0)
     rack (1.6.0)
     rack-oauth2 (1.1.1)
       activesupport (>= 2.3)
@@ -289,7 +292,6 @@ DEPENDENCIES
   faye
   fb_graph
   foreman
-  haml (= 4.0.5)
   jbuilder (~> 2.0)
   jquery-rails
   mailboxer!
@@ -298,6 +300,7 @@ DEPENDENCIES
   omniauth-twitter
   paperclip (~> 4.1)
   private_pub
+  public_activity
   rails (= 4.2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

@@ -2,6 +2,8 @@ class ConverzationsController < ApplicationController
 	before_filter :authenticate_user!
  
   layout false
+  def index
+  end
  
   def create
     if Converzation.between(params[:sender_id],params[:recipient_id]).present?

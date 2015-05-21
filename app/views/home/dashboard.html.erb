@@ -6,6 +6,7 @@
 <div class="container-fluid">
   </div>
 
+    
    <% @users.each do |user| %>
         <div class="col-sm-3 grid-user-list">
           <div class="panel panel-default">
@@ -14,7 +15,10 @@
                   <div class="col-lg-6 pull-left nomargin" style="padding: 0px;">
                       <div class="text"><%= user.username %></div>
                           <div class="actions"> 
-                               <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-converzation","data-sid" => current_user.id, "data-rip" => user.id %>
+                              <% if current_user.friend_approved(user.id) %>
+                                 <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-converzation","data-sid" => current_user.id, "data-rip" => user.id %>
+                              <% end %>
+
                              <% unless current_user == @user %>
                               <%= link_to "Add Friend",friendships_path(:friend_id => user),:method => :post, class: "btn btn-success btn-xs start-converzation" ,data: { disable_with: "Request sent.." } %>
                                <%end%>
@@ -26,7 +30,7 @@
           </div><!--/panel-->   
  </div><!--/grid user--> 
 
-
+  
    <%end%>
 <%else%>
   <div class="row">

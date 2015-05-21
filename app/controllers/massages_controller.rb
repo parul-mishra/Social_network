@@ -8,6 +8,8 @@ class MassagesController < ApplicationController
     @massage.save!
  
     @path = converzation_path(@converzation)
+
+    PrivatePub.publish_to("/converzations/#{@converzation}/new", "alert('#{@massage.body}');")
   end
  
   private
