@@ -10,4 +10,5 @@ class Friendship < ActiveRecord::Base
    scope :friend_not_approved, lambda { |friend_id|
 	  where(:friend_id => friend_id, :approved => false).first
 	}  
+
 end
