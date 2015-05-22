@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519111735) do
+ActiveRecord::Schema.define(version: 20150522120417) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id",   limit: 4
@@ -41,22 +41,15 @@ ActiveRecord::Schema.define(version: 20150519111735) do
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "conversation_chats", force: :cascade do |t|
-    t.integer  "sender_id",    limit: 4
-    t.integer  "recipient_id", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "conversation_chats", ["recipient_id"], name: "index_conversation_chats_on_recipient_id", using: :btree
-  add_index "conversation_chats", ["sender_id"], name: "index_conversation_chats_on_sender_id", using: :btree
-
   create_table "converzations", force: :cascade do |t|
     t.integer  "sender_id",    limit: 4
     t.integer  "recipient_id", limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  add_index "converzations", ["recipient_id"], name: "index_converzations_on_recipient_id", using: :btree
+  add_index "converzations", ["sender_id"], name: "index_converzations_on_sender_id", using: :btree
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -65,7 +58,6 @@ ActiveRecord::Schema.define(version: 20150519111735) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
-   add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
@@ -149,17 +141,6 @@ ActiveRecord::Schema.define(version: 20150519111735) do
   add_index "massages", ["converzation_id"], name: "index_massages_on_converzation_id", using: :btree
   add_index "massages", ["user_id"], name: "index_massages_on_user_id", using: :btree
 
-  create_table "messages", force: :cascade do |t|
-    t.text     "body",            limit: 65535
-    t.integer  "converzation_id", limit: 4
-    t.integer  "user_id",         limit: 4
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-  end
-
-  add_index "messages", ["converzation_id"], name: "index_messages_on_converzation_id", using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
-
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id",             limit: 4
     t.text     "content",             limit: 65535
@@ -182,10 +163,6 @@ ActiveRecord::Schema.define(version: 20150519111735) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
   end
-
-  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
-  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
-  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -227,6 +204,4 @@ ActiveRecord::Schema.define(version: 20150519111735) do
   add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
   add_foreign_key "massages", "converzations"
   add_foreign_key "massages", "users"
-  add_foreign_key "messages", "converzations"
-  add_foreign_key "messages", "users"
 end
