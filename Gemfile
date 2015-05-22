@@ -24,7 +24,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
- gem 'pg'
 #authentication
 gem 'devise'
 gem 'omniauth-twitter'
@@ -33,7 +32,7 @@ gem 'twitter'
 gem 'fb_graph'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+  gem 'mailboxer', :git => 'git://github.com/div/mailboxer.git', :branch => 'rails42-foreigner'
 gem 'will_paginate', '3.0.4'
 
 # image upload
@@ -58,7 +57,7 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   #gem 'spring'
-  gem 'mailboxer', :git => 'git://github.com/div/mailboxer.git', :branch => 'rails42-foreigner'
+
 
 # USe chat function
  gem 'private_pub'
