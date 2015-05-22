@@ -57,6 +57,10 @@ validates :username,
     all_request.first
   end
 
+ def friend_not_approved(friend_id)
+    all_request = friendships.where(:friend_id => friend_id, :approved => false)
+    all_request.first
+  end
  
   def mailboxer_email(object)
     self.email

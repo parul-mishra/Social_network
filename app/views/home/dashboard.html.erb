@@ -17,12 +17,14 @@
                           <div class="actions"> 
                               <% if current_user.friend_approved(user.id) %>
                                  <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-converzation","data-sid" => current_user.id, "data-rip" => user.id %>
+
                               <% end %>
 
-                             <% unless current_user == @user %>
-                              <%= link_to "Add Friend",friendships_path(:friend_id => user),:method => :post, class: "btn btn-success btn-xs start-converzation" ,data: { disable_with: "Request sent.." } %>
-                               <%end%>
-        
+                             <% if !current_user.pending_friends.include?(user) && !current_user.active_friends.include?(user) && !current_user.passive_friends.include?(user)%>
+                              <%= link_to "ADD Friend",friendships_path(:friend_id => user),:method => :post, class: "btn btn-success btn-xs start-converzation" %>
+
+                             <%end%>
+                                
                           </div><!--action-->
                       </div>
                   </div><!--/col-->        

@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150519111735) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+   add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id",      limit: 4
